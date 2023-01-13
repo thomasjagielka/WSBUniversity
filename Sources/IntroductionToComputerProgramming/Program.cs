@@ -4,7 +4,7 @@
     {
         static void Main()
         {
-            ExerciseSet3.Exercise7();
+            ExerciseSet4.Exercise1();
         }
     }
 }
