@@ -494,7 +494,7 @@
 
             public void RollDices(Player player)
             {
-                Animal[] redDicesSides = { Animal.RABBIT, Animal.RABBIT, Animal.RABBIT,
+                Animal[] redDiceSides = { Animal.RABBIT, Animal.RABBIT, Animal.RABBIT,
                     Animal.RABBIT, Animal.RABBIT, Animal.RABBIT,
                     Animal.SHEEP, Animal.SHEEP,
                     Animal.PIG, Animal.PIG,
@@ -506,10 +506,10 @@
                     Animal.PIG, Animal.COW, Animal.WOLF };
 
                 Random random = new Random();
-                int redDiceSideIndex = random.Next(0, redDicesSides.Length);
+                int redDiceSideIndex = random.Next(0, redDiceSides.Length);
                 int greenDiceSideIndex = random.Next(0, greenDiceSides.Length);
 
-                Animal redDiceAnimal = redDicesSides[redDiceSideIndex];
+                Animal redDiceAnimal = redDiceSides[redDiceSideIndex];
                 Animal greenDiceAnimal = greenDiceSides[greenDiceSideIndex];
 
                 if (redDiceAnimal == Animal.FOX) RolledFox(player);
@@ -570,6 +570,7 @@
             Console.WriteLine(message);
             foreach (var animal in animalEnumArray)
                 Console.WriteLine($"{(int)animal + 1}. {animal}");
+
             int animalIndexChoiceInput = Helper.GetInput<int>() - 1;
             return animalIndexChoiceInput;
         }
@@ -626,7 +627,7 @@
 
         public static int Menu(Game game, Player currentPlayer)
         {
-            int input = Helper.GetInput<int>($"\n{currentPlayer.name}, please select action:\n1. No action \n2. Show game state\n3. Trade\n");
+            int input = Helper.GetInput<int>($"\n{currentPlayer.name}, please select action:\n1. Roll dices \n2. Show game state\n3. Trade\n");
 
             switch (input)
             {
