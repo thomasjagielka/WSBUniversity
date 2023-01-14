@@ -582,6 +582,13 @@
                 Console.WriteLine($"\n{player.name}:\n{string.Join(Environment.NewLine, player.animals)}");
         }
 
+        public static void PrintExchangeTable()
+        {
+            Console.WriteLine("\n[1]SHEEP = [6]RABBIT  |  [1]HORSE    = [2]COW  ");
+            Console.WriteLine("[1]PIG   = [2]SHEEP   |  [1]SMALLDOG = [1]SHEEP");
+            Console.WriteLine("[1]COW   = [3]PIG     |  [1]BIGDOG   = [1]COW  ");
+        }
+
         public static void TradeMenu(Game game, Player currentPlayer)
         {
             Console.WriteLine("\nWith what/whom do you want to trade?\n0. The herd");
@@ -627,7 +634,7 @@
 
         public static int Menu(Game game, Player currentPlayer)
         {
-            int input = Helper.GetInput<int>($"\n{currentPlayer.name}, please select action:\n1. Roll dices \n2. Show game state\n3. Trade\n");
+            int input = Helper.GetInput<int>($"\n{currentPlayer.name}, please select action:\n1. Roll dices \n2. Show game state\n3. Exchange rules\n4. Trade\n");
 
             switch (input)
             {
@@ -635,6 +642,9 @@
                     PrintGameState(game);
                     break;
                 case 3:
+                    PrintExchangeTable();
+                    break;
+                case 4:
                     TradeMenu(game, currentPlayer);
                     break;
             }
