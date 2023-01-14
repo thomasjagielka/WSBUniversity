@@ -1,20 +1,35 @@
-﻿namespace IntroductionToComputerProgramming
+﻿using System.IO;
+
+namespace IntroductionToComputerProgramming
 {
     internal class ExerciseSet4
     {
         public static void Exercise1()
         {
-            using (StreamWriter sw = File.CreateText("my_first_file.txt"))
-            {
-                sw.Write("Tomasz Jagiełka");
-            }
+            File.AppendAllText("my_first_file.txt", "Tomasz Jagiełka");
         }
 
         public static void Exercise2()
         {
-            using (StreamReader sw = File.OpenText("my_first_file.txt"))
+            Console.Write(File.ReadAllText("my_first_file.txt"));
+        }
+
+        public static void Exercise3()
+        {
+            string FILE_NAME = "data.txt";
+            if (!File.Exists(FILE_NAME))
+                File.AppendAllText(FILE_NAME, "Captain's log" + Environment.NewLine);
+
+            while (Helper.GetInput<string>() != "start") { }
+
+            string input = Helper.GetInput<string>();
+            using (StreamWriter sw = File.CreateText(FILE_NAME))
             {
-                Console.WriteLine(sw.ReadLine());
+                do
+                {
+                    sw.WriteLine(input);
+                    input = Helper.GetInput<string>();
+                } while (input != "stop");
             }
         }
     }
