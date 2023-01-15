@@ -16,20 +16,28 @@ namespace IntroductionToComputerProgramming
 
         public static void Exercise3()
         {
-            string FILE_NAME = "data.txt";
-            if (!File.Exists(FILE_NAME))
-                File.AppendAllText(FILE_NAME, "Captain's log" + Environment.NewLine);
+            string date = DateTime.Today.ToString("dd-MM-yyyy");
+            string fileName = $"{date}.txt";
 
-            while (Helper.GetInput<string>() != "start") { }
+            if (!File.Exists(fileName))
+                File.AppendAllText(fileName, $"Captain's log{Environment.NewLine}Stardate {date}{Environment.NewLine}");
 
-            string input = Helper.GetInput<string>(); 
-            using (StreamWriter sw = File.CreateText(FILE_NAME))
+            while (Helper.GetInput<string>() != "start") {}
+
+            using (StreamWriter sw = File.AppendText(fileName))
             {
-                do
+                string hour = DateTime.Now.ToString("HH:mm:ss");
+                sw.WriteLine($"Jean-Luc Picard - start - {hour}");
+
+                string input = Helper.GetInput<string>(); 
+                while (input != "stop")
                 {
                     sw.WriteLine(input);
                     input = Helper.GetInput<string>();
-                } while (input != "stop");
+                }
+
+                hour = DateTime.Now.ToString("HH:mm:ss");
+                sw.WriteLine($"Jean-Luc Picard - stop - {hour}");
             }
         }
 
