@@ -2,9 +2,13 @@
 {
     internal class IntroductionToComputerProgramming
     {
-        static void Main()
+        public class Program
         {
-            ExerciseSet4.Exercise3();
+            static void Main(string[] args)
+            {
+                
+            }
         }
+
     }
 }
